@@ -29,17 +29,17 @@
     <Company>SKB Kontur</Company>
     <Product>Vostok</Product>
     <Copyright>Copyright (c) 2017-2018 SKB Kontur</Copyright>
-    <Title>TODO</Title>
-    <Description>TODO</Description>
+    <Title>Vostok common primitives library</Title>
+    <Description>Common primitives for microservice toolkit http://vostok.tools/</Description>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageProjectUrl>TODO</PackageProjectUrl>
-    <PackageLicenseUrl>TODO</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/vostok/.primitives</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/vostok/.primitives/blob/master/LICENSE</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageTags>vostok</PackageTags>
+    <PackageTags>vostok vostok.commons.primitives</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/vostok/devtools/master/assets/Vostok-icon.png</PackageIconUrl>
-    <RepositoryUrl>TODO</RepositoryUrl>
+    <RepositoryUrl>https://github.com/vostok/commons.primitives</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
