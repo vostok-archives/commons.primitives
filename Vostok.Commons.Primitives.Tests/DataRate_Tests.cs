@@ -185,13 +185,5 @@ namespace Vostok.Commons.Primitives.Tests
         {
             new DataRate(10).GetHashCode().Should().Be(10.GetHashCode());
         }
-
-        [Test]
-        public void Should_DeserializeBinary()
-        { }
-
-        [Test]
-        public void Should_SerializeBinary()
-        { }
     }
 }

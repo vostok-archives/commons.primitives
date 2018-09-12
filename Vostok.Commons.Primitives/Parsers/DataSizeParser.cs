@@ -3,7 +3,7 @@ using Vostok.Commons.Helpers;
 
 namespace Vostok.Commons.Primitives.Parsers
 {
-    public static class DataSizeParser
+    internal static class DataSizeParser
     {
         private const string Bytes1 = "b";
         private const string Bytes2 = "bytes";
