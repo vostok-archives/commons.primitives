@@ -1,6 +1,6 @@
 ﻿namespace Vostok.Commons.Primitives
 {
-    public static class DataSizeConstants
+    internal static class DataSizeConstants
     {
         public const long Kilobyte = 1024;
         public const long Megabyte = Kilobyte * Kilobyte;

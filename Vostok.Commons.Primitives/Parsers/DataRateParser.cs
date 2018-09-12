@@ -2,7 +2,7 @@
 
 namespace Vostok.Commons.Primitives.Parsers
 {
-    public static class DataRateParser
+    internal static class DataRateParser
     {
         private const string Second1 = "/s";
         private const string Second2 = "/sec";
@@ -20,7 +20,7 @@ namespace Vostok.Commons.Primitives.Parsers
 
             if (DataSizeParser.TryParse(input, out var res))
             {
-                result = res/TimeSpan.FromSeconds(1);
+                result = res / TimeSpan.FromSeconds(1);
                 return true;
             }
 

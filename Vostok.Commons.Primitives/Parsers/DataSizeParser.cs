@@ -1,4 +1,5 @@
 ﻿using System;
+using Vostok.Commons.Helpers;
 
 namespace Vostok.Commons.Primitives.Parsers
 {
@@ -26,7 +27,7 @@ namespace Vostok.Commons.Primitives.Parsers
         {
             input = input.ToLower();
 
-            bool TryParse(string unit, out double res) => DoubleParser.TryParse(PrepareInput(input, unit), out res);
+            bool TryParse(string unit, out double res) => FloatingPointParser<double>.TryParse(PrepareInput(input, unit), out res);
             bool TryParseLong(string unit, out long res) => long.TryParse(PrepareInput(input, unit), out res);
 
             bool TryGet(FromDouble method, string unit, out DataSize res)
@@ -40,7 +41,7 @@ namespace Vostok.Commons.Primitives.Parsers
 
             bool TryGetL(FromLong method, string unit, out DataSize res)
             {
-                res = default(DataSize);
+                res = default;
                 if (!input.Contains(unit)) return false;
                 if (!TryParseLong(unit, out var val)) return false;
                 res = method(val);
@@ -77,11 +78,11 @@ namespace Vostok.Commons.Primitives.Parsers
             throw new FormatException($"{nameof(DataSizeParser)}. Failed to parse from string '{input}'.");
         }
 
+        private static string PrepareInput(string input, string unit) =>
+            input.Replace(unit, string.Empty).Trim('.').Trim();
+
         private delegate DataSize FromDouble(double value);
 
         private delegate DataSize FromLong(long value);
-
-        private static string PrepareInput(string input, string unit) =>
-            input.Replace(unit, string.Empty).Trim('.').Trim();
     }
 }
