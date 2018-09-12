@@ -32,7 +32,8 @@ namespace Vostok.Commons.Primitives.Parsers
         {
             if (TryParse(input, out var res))
                 return res;
-            throw new FormatException($"{nameof(DataRateParser)}. Error in parsing string {input} to float.");
+
+            throw new FormatException($"{nameof(DataRateParser)}: error in parsing string '{input}' to {nameof(DataRate)}.");
         }
     }
 }
