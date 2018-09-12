@@ -75,7 +75,8 @@ namespace Vostok.Commons.Primitives.Parsers
         {
             if (TryParse(input, out var res))
                 return res;
-            throw new FormatException($"{nameof(DataSizeParser)}. Failed to parse from string '{input}'.");
+
+            throw new FormatException($"{nameof(DataSizeParser)}: failed to parse {nameof(DataSize)} from string '{input}'.");
         }
 
         private static string PrepareInput(string input, string unit) =>
