@@ -22,7 +22,7 @@
   <PropertyGroup>
     <PackageProjectUrl>https://github.com/vostok/commons.primitives</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/vostok/commons.primitives/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageTags>vostok</PackageTags>
+    <PackageTags>vostok vostok.commons</PackageTags>
     <RepositoryUrl>https://github.com/vostok/commons.primitives</RepositoryUrl>
   </PropertyGroup>
 
