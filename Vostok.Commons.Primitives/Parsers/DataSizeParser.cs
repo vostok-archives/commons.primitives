@@ -27,7 +27,7 @@ namespace Vostok.Commons.Primitives.Parsers
         {
             input = input.ToLower();
 
-            bool TryParse(string unit, out double res) => FloatingPointParser<double>.TryParse(PrepareInput(input, unit), out res);
+            bool TryParse(string unit, out double res) => NumericTypeParser<double>.TryParse(PrepareInput(input, unit), out res);
             bool TryParseLong(string unit, out long res) => long.TryParse(PrepareInput(input, unit), out res);
 
             bool TryGet(FromDouble method, string unit, out DataSize res)
