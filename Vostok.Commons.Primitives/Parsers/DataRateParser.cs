@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using JetBrains.Annotations;
+using Vostok.Commons.Primitives.Parsers;
 
 namespace Vostok.Commons.Primitives.Parsers
 {
@@ -35,5 +37,25 @@ namespace Vostok.Commons.Primitives.Parsers
 
             throw new FormatException($"{nameof(DataRateParser)}: error in parsing string '{input}' to {nameof(DataRate)}.");
         }
+    }
+}
+
+namespace Vostok.Commons.Primitives
+{
+    [PublicAPI]
+    internal partial struct DataRate
+    {        
+        /// <summary>
+        /// Attempts to parse <see cref="DataRate"/> from a string.
+        /// </summary>
+        public static bool TryParse(string input, out DataRate result) =>
+            DataRateParser.TryParse(input, out result);
+
+        /// <summary>
+        /// <para>Attempts to parse <see cref="DataRate"/> from a string.</para>
+        /// <para>In case of failure a <see cref="FormatException"/> is thrown.</para>
+        /// </summary>
+        public static DataRate Parse(string input) =>
+            DataRateParser.Parse(input);
     }
 }

@@ -3,7 +3,7 @@
 namespace Vostok.Commons.Primitives
 {
     [PublicAPI]
-    public static class DataRateConversionExtensions
+    internal static class DataRateConversionExtensions
     {
         /// <summary>
         /// Creates a new <see cref="DataRate"/> from given bytes per second value.

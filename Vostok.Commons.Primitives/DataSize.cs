@@ -1,6 +1,5 @@
 ﻿using System;
 using JetBrains.Annotations;
-using Vostok.Commons.Primitives.Parsers;
 
 namespace Vostok.Commons.Primitives
 {
@@ -9,7 +8,7 @@ namespace Vostok.Commons.Primitives
     /// </summary>
     [PublicAPI]
     [Serializable]
-    public struct DataSize : IEquatable<DataSize>, IComparable<DataSize>
+    internal partial struct DataSize : IEquatable<DataSize>, IComparable<DataSize>
     {
         /// <summary>
         /// Creates a new instance of <see cref="DataSize"/> class.
@@ -51,19 +50,6 @@ namespace Vostok.Commons.Primitives
         /// </summary>
         public static DataSize FromPetabytes(double petabytes) =>
             new DataSize((long)(petabytes * DataSizeConstants.Petabyte));
-
-        /// <summary>
-        /// Attempts to parse <see cref="DataSize"/> from a string.
-        /// </summary>
-        public static bool TryParse(string input, out DataSize result) =>
-            DataSizeParser.TryParse(input, out result);
-
-        /// <summary>
-        /// <para>Attempts to parse <see cref="DataSize"/> from a string.</para>
-        /// <para>In case of failure a <see cref="FormatException"/> is thrown.</para>
-        /// </summary>
-        public static DataSize Parse(string input) =>
-            DataSizeParser.Parse(input);
 
         /// <summary>
         /// Returns the total number of bytes in current <see cref="DataSize"/>.
@@ -148,12 +134,6 @@ namespace Vostok.Commons.Primitives
 
         public static DataSize operator/(DataSize size, double divider) =>
             new DataSize((long)(size.Bytes / divider));
-
-        public static DataRate operator/(DataSize size, TimeSpan time) =>
-            new DataRate((size / time.TotalSeconds).Bytes);
-
-        public static TimeSpan operator/(DataSize size, DataRate speed) =>
-            TimeSpan.FromSeconds(size.Bytes / (double)speed.BytesPerSecond);
 
         public static DataSize operator-(DataSize size) =>
             new DataSize(-size.Bytes);

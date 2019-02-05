@@ -1,5 +1,7 @@
-﻿using System;
+using System;
+using JetBrains.Annotations;
 using Vostok.Commons.Helpers;
+using Vostok.Commons.Primitives.Parsers;
 
 namespace Vostok.Commons.Primitives.Parsers
 {
@@ -85,5 +87,25 @@ namespace Vostok.Commons.Primitives.Parsers
         private delegate DataSize FromDouble(double value);
 
         private delegate DataSize FromLong(long value);
+    }
+}
+
+namespace Vostok.Commons.Primitives
+{
+    [PublicAPI]
+    internal partial struct DataSize
+    {
+        /// <summary>
+        /// Attempts to parse <see cref="DataSize"/> from a string.
+        /// </summary>
+        public static bool TryParse(string input, out DataSize result) =>
+            DataSizeParser.TryParse(input, out result);
+
+        /// <summary>
+        /// <para>Attempts to parse <see cref="DataSize"/> from a string.</para>
+        /// <para>In case of failure a <see cref="FormatException"/> is thrown.</para>
+        /// </summary>
+        public static DataSize Parse(string input) =>
+            DataSizeParser.Parse(input);
     }
 }

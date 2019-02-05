@@ -3,7 +3,7 @@
 namespace Vostok.Commons.Primitives
 {
     [PublicAPI]
-    public static class DataSizeConversionExtensions
+    internal static class DataSizeConversionExtensions
     {
         /// <summary>
         /// Creates a new <see cref="DataSize"/> from given bytes value.

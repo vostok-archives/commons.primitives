@@ -1,6 +1,5 @@
 ﻿using System;
 using JetBrains.Annotations;
-using Vostok.Commons.Primitives.Parsers;
 
 namespace Vostok.Commons.Primitives
 {
@@ -9,7 +8,7 @@ namespace Vostok.Commons.Primitives
     /// </summary>
     [PublicAPI]
     [Serializable]
-    public struct DataRate : IEquatable<DataRate>, IComparable<DataRate>
+    internal partial struct DataRate : IEquatable<DataRate>, IComparable<DataRate>
     {
         /// <summary>
         /// Creates a new instance of <see cref="DataRate"/> class.
@@ -51,19 +50,6 @@ namespace Vostok.Commons.Primitives
         /// </summary>
         public static DataRate FromPetabytesPerSecond(double petabytes) =>
             new DataRate((long)(petabytes * DataSizeConstants.Petabyte));
-
-        /// <summary>
-        /// Attempts to parse <see cref="DataRate"/> from a string.
-        /// </summary>
-        public static bool TryParse(string input, out DataRate result) =>
-            DataRateParser.TryParse(input, out result);
-
-        /// <summary>
-        /// <para>Attempts to parse <see cref="DataRate"/> from a string.</para>
-        /// <para>In case of failure a <see cref="FormatException"/> is thrown.</para>
-        /// </summary>
-        public static DataRate Parse(string input) =>
-            DataRateParser.Parse(input);
 
         /// <summary>
         /// Returns the total number of bytes per second in current <see cref="DataRate"/>.
@@ -175,5 +161,15 @@ namespace Vostok.Commons.Primitives
             BytesPerSecond.CompareTo(other.BytesPerSecond);
 
         #endregion
+    }
+
+    [PublicAPI]
+    internal partial struct DataSize
+    {        
+        public static DataRate operator/(DataSize size, TimeSpan time) =>
+            new DataRate((size / time.TotalSeconds).Bytes);
+
+        public static TimeSpan operator/(DataSize size, DataRate speed) =>
+            TimeSpan.FromSeconds(size.Bytes / (double)speed.BytesPerSecond);
     }
 }
